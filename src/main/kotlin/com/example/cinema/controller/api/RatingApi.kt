@@ -1,6 +1,6 @@
 package com.example.cinema.controller.api
 
-import com.example.cinema.model.request.RateMovie
+import com.example.cinema.model.request.RateMovieRequest
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
@@ -24,5 +24,5 @@ interface RatingApi {
             )
         ]
     )
-    fun submitReview(@RequestBody rateMovie: RateMovie)
+    fun submitReview(@RequestBody rateMovieRequest: RateMovieRequest)
 }

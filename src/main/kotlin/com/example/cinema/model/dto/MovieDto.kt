@@ -1,8 +1,8 @@
 package com.example.cinema.model.dto
 
 data class MovieDto(
-    var title: String?,
-    var imdbId: String?,
-    var showings: List<ShowtimeDto>? = null,
-    var ratings: List<RatingDto>? = null
+    val title: String?,
+    val imdbId: String?,
+    val showings: List<ShowtimeDto>? = null,
+    val ratings: List<RatingDto>? = null
 )

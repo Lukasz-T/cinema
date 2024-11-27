@@ -16,7 +16,7 @@ class ShowtimeEntity(
     @ManyToOne
     @JoinColumn(name = "movie_id")
     @JsonBackReference
-    val movie: MovieEntity,
-    val showtime: LocalDateTime,
-    val price: BigDecimal
+    var movie: MovieEntity,
+    var showtime: LocalDateTime,
+    var price: BigDecimal
 )

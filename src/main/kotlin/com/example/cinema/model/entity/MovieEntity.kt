@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor
 class MovieEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var movieId: Long?,
+    val movieId: Long?,
     var title: String? = null,
     var imdbId: String? = null,
     @JsonManagedReference

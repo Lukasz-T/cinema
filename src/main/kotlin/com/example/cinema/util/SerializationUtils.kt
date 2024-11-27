@@ -1,9 +1,11 @@
 package com.example.cinema.util
 
+import com.example.cinema.configuration.rest.throwServiceException
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.LoggerFactory
+import org.springframework.http.HttpStatus
 import java.io.IOException
 
 object SerializationUtils {
@@ -15,7 +17,7 @@ object SerializationUtils {
             mapper.writeValueAsString(obj)
         } catch (e: Exception) {
             logger.error("Cannot serialize object:", e)
-            null
+            throwServiceException(HttpStatus.INTERNAL_SERVER_ERROR, "Cannot serialize object: " + e)
         }
     }
 
@@ -28,7 +30,8 @@ object SerializationUtils {
             mapper.readValue(json, clazz)
         } catch (e: IOException) {
             logger.error("Cannot deserialize String:", e)
-            null
+            throwServiceException(HttpStatus.INTERNAL_SERVER_ERROR, "Cannot deserialize String: " + e)
+
         }
     }
 }

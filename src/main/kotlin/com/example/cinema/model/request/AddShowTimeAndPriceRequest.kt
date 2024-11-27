@@ -1,4 +1,4 @@
-package com.example.cinema.model.dto
+package com.example.cinema.model.request
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import io.swagger.v3.oas.annotations.media.Schema

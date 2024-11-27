@@ -4,6 +4,6 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 data class ShowtimeDto(
-    var startTime: LocalDateTime,
-    var ticketPrice: BigDecimal
+    val startTime: LocalDateTime,
+    val ticketPrice: BigDecimal
 )

@@ -1,9 +1,13 @@
 package com.example.cinema.util
 
-import com.example.cinema.model.dto.*
+import com.example.cinema.model.dto.MovieDto
+import com.example.cinema.model.dto.MovieShortDto
+import com.example.cinema.model.dto.RatingDto
+import com.example.cinema.model.dto.ShowtimeDto
 import com.example.cinema.model.entity.MovieEntity
 import com.example.cinema.model.entity.RatingEntity
 import com.example.cinema.model.entity.ShowtimeEntity
+import com.example.cinema.model.request.AddShowTimeAndPriceRequest
 
 
 class ObjectMapperUtils() {

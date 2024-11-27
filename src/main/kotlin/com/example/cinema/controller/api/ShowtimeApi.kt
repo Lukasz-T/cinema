@@ -1,7 +1,7 @@
 package com.example.cinema.controller.api
 
-import com.example.cinema.model.dto.AddShowTimeAndPriceRequest
 import com.example.cinema.model.dto.ShowtimeDto
+import com.example.cinema.model.request.AddShowTimeAndPriceRequest
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime

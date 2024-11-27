@@ -21,7 +21,7 @@ class OmdbService(
     @Value("\${omdb.address}") private val uri: String,
     @Value("\${omdb.api.key}") private val apiKey: String
 ) {
-    val restTemplate: RestTemplate = RestTemplateBuilder().build()
+    var restTemplate: RestTemplate = RestTemplateBuilder().build()
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     fun fetchMovieDetails(movieId: String): OmdbDto? {
@@ -36,8 +36,9 @@ class OmdbService(
                 String::class.java
             )
             return SerializationUtils.deserializeObject(response.body, OmdbDto::class.java)
-        } catch (ex: HttpClientErrorException) {
-            throw throwServiceException(HttpStatus.INTERNAL_SERVER_ERROR, "error during deserialization")
+        } catch (e: HttpClientErrorException) {
+            throwServiceException(HttpStatus.INTERNAL_SERVER_ERROR, e.toString())
         }
+
     }
 }

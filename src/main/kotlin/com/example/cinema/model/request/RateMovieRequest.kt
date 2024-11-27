@@ -3,7 +3,7 @@ package com.example.cinema.model.request
 import jakarta.validation.constraints.NotNull
 import org.hibernate.validator.constraints.Range
 
-class RateMovie(
+class RateMovieRequest(
     @get:NotNull
     var movieId: Long,
     @get:NotNull

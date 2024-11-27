@@ -5,6 +5,9 @@ It is available to see under:
 
 http://localhost:8080/swagger-ui/index.html
 
+Api docs available under:
+http://localhost:8080/v3/api-docs
+
 The db console is available under:
 
 http://localhost:8080/h2_console
