@@ -1,9 +1,6 @@
 package com.example.cinema.util
 
-import com.example.cinema.model.dto.MovieDto
-import com.example.cinema.model.dto.MovieShortDto
-import com.example.cinema.model.dto.RatingDto
-import com.example.cinema.model.dto.ShowtimeDto
+import com.example.cinema.model.dto.*
 import com.example.cinema.model.entity.MovieEntity
 import com.example.cinema.model.entity.RatingEntity
 import com.example.cinema.model.entity.ShowtimeEntity
@@ -27,9 +24,8 @@ class ObjectMapperUtils() {
 
         fun toMovieDto(entity: MovieEntity): MovieDto {
             return MovieDto(
-                movieId = entity.movieId ?: 0L,
-                title = entity.title ?: "Untitled",
-                imdbId = entity.imdbId ?: "Unknown",
+                title = entity.title,
+                imdbId = entity.imdbId,
                 showings = entity.showtimes?.map { toShowtimeDto(it) },
                 ratings = entity.ratings?.map { toRatingDto(it) }
             )
@@ -45,6 +41,22 @@ class ObjectMapperUtils() {
         private fun toRatingDto(entity: RatingEntity): RatingDto {
             return RatingDto(
                 value = entity.rating
+            )
+        }
+
+        fun toShowTimeDto(entity: ShowtimeEntity): ShowtimeDto {
+            return ShowtimeDto(
+                startTime = entity.showtime,
+                ticketPrice = entity.price
+            )
+        }
+
+        fun toShowtimeEntity(
+            addShowTimeAndPriceRequest: AddShowTimeAndPriceRequest,
+            movie: MovieEntity
+        ): ShowtimeEntity {
+            return ShowtimeEntity(
+                null, movie, addShowTimeAndPriceRequest.newTime, addShowTimeAndPriceRequest.newTicketPrice
             )
         }
 

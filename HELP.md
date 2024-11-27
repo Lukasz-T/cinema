@@ -1,14 +1,22 @@
-# Getting Started
+The application uses H2 in memory DB for convenience.
+It uses Kotlin 1.9.25 and Springboot 3.3.5.
+OpenApi version 3.
+It is available to see under:
 
-### Reference Documentation
-For further reference, please consider the following sections:
+http://localhost:8080/swagger-ui/index.html
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/3.3.5/gradle-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.3.5/gradle-plugin/packaging-oci-image.html)
+The db console is available under:
 
-### Additional Links
-These additional references should also help you:
+http://localhost:8080/h2_console
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+JDBC URL - jdbc:h2:mem:testdb
+USER NAME - sa
+Password - password
 
+Through the console all 3 tables will be seen filled with test data.
+
+
+The APIS implemented are taken from:
+https://popshop.atlassian.net/wiki/external/Y2ZlNDViODdkYmY4NDg5OWE0MjgwNjdiMTFjMTZjYjg
+
+The internal endpoint for adding show times and prices should have at least Basic Auth implemented through Spring Security - I haven't done that because of time restrictions

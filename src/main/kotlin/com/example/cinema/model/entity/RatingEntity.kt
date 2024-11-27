@@ -1,5 +1,6 @@
 package com.example.cinema.model.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import lombok.Data
 
@@ -9,9 +10,10 @@ import lombok.Data
 class RatingEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val ratingId: Long? = null,
+    val ratingId: Long?,
     @ManyToOne
     @JoinColumn(name = "movie_id")
+    @JsonBackReference
     var movie: MovieEntity,
     var rating: Int
 )
