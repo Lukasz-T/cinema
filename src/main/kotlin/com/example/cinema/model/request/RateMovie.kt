@@ -5,8 +5,8 @@ import org.hibernate.validator.constraints.Range
 
 class RateMovie(
     @get:NotNull
-    var movieId: Long?,
+    var movieId: Long,
     @get:NotNull
     @get:Range(min = 0L, max = 5L, message = "Movie rating can only be between 0 and 5")
-    var rating: Int?
+    var rating: Int
 )

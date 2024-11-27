@@ -5,13 +5,13 @@ import lombok.Data
 
 @Entity
 @Data
-@Table(name = "reviews")
-class Review(
+@Table(name = "ratings")
+class RatingEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val reviewId: Long? = null,
+    val ratingId: Long? = null,
     @ManyToOne
     @JoinColumn(name = "movie_id")
-    val movie: Movie,
-    val rating: Int
+    var movie: MovieEntity,
+    var rating: Int
 )
