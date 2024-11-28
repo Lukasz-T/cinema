@@ -8,6 +8,7 @@ import com.example.cinema.model.dto.ShowtimeDto
 import com.example.cinema.model.request.AddShowTimeAndPriceRequest
 import com.example.cinema.util.ObjectMapperUtils
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -20,8 +21,8 @@ class ShowtimeController(private val showtimeService: ShowtimeService, private v
     override fun getShowtimesForMovie(
         @PathVariable movieId: Long,
         @RequestParam fromTime: LocalDateTime
-    ): List<ShowtimeDto> {
-        return showtimeService.getShowtimesForMovie(movieId, fromTime)
+    ): ResponseEntity<List<ShowtimeDto>> {
+        val list = showtimeService.getShowtimesForMovie(movieId, fromTime)
             .filter { it.isNotEmpty() }
             .map { showtimes ->
                 showtimes.map { ObjectMapperUtils.toShowTimeDto(it) }
@@ -32,10 +33,11 @@ class ShowtimeController(private val showtimeService: ShowtimeService, private v
                     "Movie you want to find showtimes for does not exist or has no showtimes"
                 )
             }
+        return ResponseEntity.ok(list)
     }
 
-    override fun saveShowTimeAndPrice(addShowTimeAndPriceRequest: AddShowTimeAndPriceRequest) {
-        movieService.getMovie(addShowTimeAndPriceRequest.movieId)
+    override fun saveShowTimeAndPrice(addShowTimeAndPriceRequest: AddShowTimeAndPriceRequest): ResponseEntity<Any> {
+        val movie = movieService.getMovie(addShowTimeAndPriceRequest.movieId)
             .orElse(null)
             ?.let { movieEntity ->
                 showtimeService.saveShowtime(
@@ -48,5 +50,6 @@ class ShowtimeController(private val showtimeService: ShowtimeService, private v
             HttpStatus.NOT_FOUND,
             "Movie you want to add new showtime and price to does not exist"
         )
+        return ResponseEntity.ok("New showtime and price saved")
     }
 }

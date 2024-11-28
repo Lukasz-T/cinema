@@ -21,7 +21,7 @@ interface RatingApi {
             ApiResponse(
                 responseCode = "200", description = "Movie successfully rated"
             ), ApiResponse(
-                responseCode = "400", description = "Invalid request data",
+                responseCode = "404", description = "Movie you want to rate does not exist",
             )
         ]
     )

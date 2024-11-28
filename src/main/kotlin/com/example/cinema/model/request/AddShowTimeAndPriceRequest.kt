@@ -1,6 +1,5 @@
 package com.example.cinema.model.request
 
-import com.fasterxml.jackson.annotation.JsonFormat
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.NotNull
 import java.math.BigDecimal
@@ -18,6 +17,6 @@ data class AddShowTimeAndPriceRequest(
 
     val newTicketPrice: BigDecimal,
 
-    @get:JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @Schema(example = "2022-10-30T12:45:00", type = "string", description = "Date time")
     val newTime: LocalDateTime
 )
