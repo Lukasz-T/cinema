@@ -3,7 +3,7 @@ package com.example.cinema.unit
 
 import com.example.cinema.controller.MovieController
 import com.example.cinema.infrastructure.service.MovieService
-import com.example.cinema.model.dto.MovieShortDto
+import com.example.cinema.model.dto.MovieShowingDto
 import com.example.cinema.model.dto.OmdbDto
 import com.example.cinema.model.dto.OmdbRatingsDto
 import com.example.cinema.model.dto.ShowtimeDto
@@ -78,8 +78,8 @@ class MovieControllerTest {
             )
         )
 
-        val movieShortDtos = listOf(
-            MovieShortDto(
+        val movieShowingDtos = listOf(
+            MovieShowingDto(
                 title = "Movie 1",
                 showings = listOf(
                     ShowtimeDto(
@@ -88,7 +88,7 @@ class MovieControllerTest {
                     )
                 )
             ),
-            MovieShortDto(
+            MovieShowingDto(
                 title = "Movie 2",
                 showings = listOf(
                     ShowtimeDto(
@@ -102,14 +102,14 @@ class MovieControllerTest {
         `when`(movieService.getMovieList()).thenReturn(movieEntities)
 
         mockk<ObjectMapperUtils.Companion> {
-            every { toShortDto(movieEntities[0]) } returns movieShortDtos[0]
-            every { toShortDto(movieEntities[1]) } returns movieShortDtos[1]
+            every { toShortDto(movieEntities[0]) } returns movieShowingDtos[0]
+            every { toShortDto(movieEntities[1]) } returns movieShowingDtos[1]
         }
 
         val response = movieController.getAllMovies()
 
         assertEquals(HttpStatus.OK, response.statusCode)
-        assertEquals(movieShortDtos, response.body)
+        assertEquals(movieShowingDtos, response.body)
     }
 
     @Test

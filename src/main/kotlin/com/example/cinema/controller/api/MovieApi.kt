@@ -1,6 +1,6 @@
 package com.example.cinema.controller.api
 
-import com.example.cinema.model.dto.MovieShortDto
+import com.example.cinema.model.dto.MovieShowingDto
 import com.example.cinema.model.dto.OmdbDto
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -25,7 +25,7 @@ interface MovieApi {
             )
         ]
     )
-    fun getAllMovies(): ResponseEntity<List<MovieShortDto>>
+    fun getAllMovies(): ResponseEntity<List<MovieShowingDto>>
 
     @GetMapping("/{movieId}")
     @Operation(summary = "Get details of a movie")

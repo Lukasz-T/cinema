@@ -1,7 +1,7 @@
 package com.example.cinema.util
 
 import com.example.cinema.model.dto.MovieDto
-import com.example.cinema.model.dto.MovieShortDto
+import com.example.cinema.model.dto.MovieShowingDto
 import com.example.cinema.model.dto.RatingDto
 import com.example.cinema.model.dto.ShowtimeDto
 import com.example.cinema.model.entity.MovieEntity
@@ -12,8 +12,8 @@ import com.example.cinema.model.request.AddShowTimeAndPriceRequest
 
 class ObjectMapperUtils {
     companion object {
-        fun toShortDto(movie: MovieEntity): MovieShortDto {
-            return MovieShortDto(
+        fun toShortDto(movie: MovieEntity): MovieShowingDto {
+            return MovieShowingDto(
                 title = movie.title,
                 showings = movie.showtimes?.map { toShowingDto(it) } ?: emptyList()
             )

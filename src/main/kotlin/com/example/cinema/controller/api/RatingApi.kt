@@ -1,14 +1,12 @@
 package com.example.cinema.controller.api
 
+import com.example.cinema.model.dto.MovieRatingDto
 import com.example.cinema.model.request.RateMovieRequest
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/ratings")
@@ -25,5 +23,22 @@ interface RatingApi {
             )
         ]
     )
-    fun submitReview(@RequestBody rateMovieRequest: RateMovieRequest): ResponseEntity<Any>
+    fun submitRating(@RequestBody rateMovieRequest: RateMovieRequest): ResponseEntity<Any>
+
+    @GetMapping("/{movieId}")
+    @Operation(summary = "Get average movie rating")
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200"
+            ), ApiResponse(
+                responseCode = "404", description = "Movie doesn't exist",
+            )
+        ]
+    )
+    fun getRatingForMoview(
+        @PathVariable movieId: Long,
+    ): ResponseEntity<MovieRatingDto>
+
+
 }

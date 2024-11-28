@@ -1,6 +1,6 @@
 package com.example.cinema.model.dto
 
-data class MovieShortDto(
+data class MovieShowingDto(
     val title: String? = null,
     val showings: List<ShowtimeDto>? = null
 )

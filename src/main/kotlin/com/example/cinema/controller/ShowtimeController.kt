@@ -37,7 +37,7 @@ class ShowtimeController(private val showtimeService: ShowtimeService, private v
     }
 
     override fun saveShowTimeAndPrice(addShowTimeAndPriceRequest: AddShowTimeAndPriceRequest): ResponseEntity<Any> {
-        val movie = movieService.getMovie(addShowTimeAndPriceRequest.movieId)
+        movieService.getMovie(addShowTimeAndPriceRequest.movieId)
             .orElse(null)
             ?.let { movieEntity ->
                 showtimeService.saveShowtime(
