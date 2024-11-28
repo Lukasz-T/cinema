@@ -28,6 +28,7 @@ class RatingControllerE2ETest {
 
     @BeforeEach
     fun setup() {
+
         val movieEntity = MovieEntity(
             movieId = 1L,
             title = "The Fast and the Furious",
@@ -64,6 +65,20 @@ class RatingControllerE2ETest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(rateMovieRequest))
         )
+            .andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun `should return average rating and title for existing movie`() {
+        val movieId = movieService.getMovieList().first().movieId
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/movies/$movieId"))
+            .andExpect(status().isOk)
+    }
+
+    @Test
+    fun `should return 404 when movie does not exist`() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/movies/9999"))
             .andExpect(status().isNotFound)
     }
 }

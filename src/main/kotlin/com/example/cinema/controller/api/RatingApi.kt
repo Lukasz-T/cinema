@@ -36,7 +36,7 @@ interface RatingApi {
             )
         ]
     )
-    fun getRatingForMoview(
+    fun getRatingForMovie(
         @PathVariable movieId: Long,
     ): ResponseEntity<MovieRatingDto>
 

@@ -31,7 +31,7 @@ class RatingController(private val ratingService: RatingService, private val mov
             } ?: throwServiceException(HttpStatus.NOT_FOUND, "Movie you want to rate does not exist")
     }
 
-    override fun getRatingForMoview(movieId: Long): ResponseEntity<MovieRatingDto> {
+    override fun getRatingForMovie(movieId: Long): ResponseEntity<MovieRatingDto> {
         val averageRating: BigDecimal
         val movieTitle: String?
 
