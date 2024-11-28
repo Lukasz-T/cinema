@@ -1,6 +1,6 @@
 package com.example.cinema.unit
 
-import com.example.cinema.configuration.rest.ServiceException
+import com.example.cinema.configuration.exception.ServiceException
 import com.example.cinema.infrastructure.service.OmdbService
 import com.example.cinema.model.dto.OmdbDto
 import org.junit.jupiter.api.Assertions.*

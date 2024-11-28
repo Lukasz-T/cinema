@@ -30,14 +30,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework:spring-web")
     implementation("org.postgresql:postgresql:42.7.2")
-    implementation("org.modelmapper:modelmapper:3.2.1")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("com.h2database:h2:2.3.232")
     implementation("org.jetbrains.kotlin:kotlin-noarg")
 
-
     compileOnly("org.projectlombok:lombok:1.18.36")
-
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")

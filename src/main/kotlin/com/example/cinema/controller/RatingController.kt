@@ -1,6 +1,6 @@
 package com.example.cinema.controller
 
-import com.example.cinema.configuration.rest.throwServiceException
+import com.example.cinema.configuration.exception.throwServiceException
 import com.example.cinema.controller.api.RatingApi
 import com.example.cinema.infrastructure.service.MovieService
 import com.example.cinema.infrastructure.service.RatingService

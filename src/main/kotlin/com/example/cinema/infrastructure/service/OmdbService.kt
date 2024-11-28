@@ -1,6 +1,6 @@
 package com.example.cinema.infrastructure.service
 
-import com.example.cinema.configuration.rest.throwServiceException
+import com.example.cinema.configuration.exception.throwServiceException
 import com.example.cinema.model.dto.OmdbDto
 import com.example.cinema.util.SerializationUtils
 import org.slf4j.LoggerFactory

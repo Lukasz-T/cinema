@@ -1,4 +1,4 @@
-package com.example.cinema.configuration.rest
+package com.example.cinema.configuration.exception
 
 import org.springframework.http.HttpStatus
 

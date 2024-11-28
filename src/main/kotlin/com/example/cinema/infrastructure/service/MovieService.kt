@@ -1,6 +1,6 @@
 package com.example.cinema.infrastructure.service
 
-import com.example.cinema.configuration.rest.throwServiceException
+import com.example.cinema.configuration.exception.throwServiceException
 import com.example.cinema.infrastructure.repository.MovieRepository
 import com.example.cinema.model.dto.OmdbDto
 import com.example.cinema.model.entity.MovieEntity
