@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class MovieController(var movieService: MovieService) : MovieApi {
+class MovieController(private val movieService: MovieService) : MovieApi {
     override fun getAllMovies(): ResponseEntity<List<MovieShortDto>> {
 
         return ResponseEntity.ok(movieService.getMovieList().stream().map { entity ->

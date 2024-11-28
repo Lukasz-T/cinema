@@ -21,7 +21,7 @@ class OmdbService(
     @Value("\${omdb.address}") private val uri: String,
     @Value("\${omdb.api.key}") private val apiKey: String
 ) {
-    var restTemplate: RestTemplate = RestTemplateBuilder().build()
+    val restTemplate: RestTemplate = RestTemplateBuilder().build()
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     fun fetchMovieDetails(movieId: String): OmdbDto? {
@@ -35,6 +35,7 @@ class OmdbService(
                 HttpEntity(movieId, HttpHeaders().apply { contentType = APPLICATION_JSON }),
                 String::class.java
             )
+            if (response.body.isNullOrEmpty()) throwServiceException(HttpStatus.NOT_FOUND, "Movie has not been found")
             return SerializationUtils.deserializeObject(response.body, OmdbDto::class.java)
         } catch (e: HttpClientErrorException) {
             throwServiceException(HttpStatus.INTERNAL_SERVER_ERROR, e.toString())

@@ -45,7 +45,7 @@ VALUES ('THE FAST AND THE FURIOUS', 'tt0232500'),
 commit;
 
 INSERT INTO SHOWTIMES (movie_id, showtime, price)
-VALUES (1, '2024-11-02 18:00:00.00', 12),
+VALUES (1, '2024-10-10 19:00:00.00', 20),
        (2, '2024-11-02 18:00:00.00', 13),
        (3, '2024-11-04 18:00:00.00', 14),
        (4, '2024-11-04 18:00:00.00', 15),

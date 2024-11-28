@@ -10,10 +10,10 @@ import lombok.Data
 class RatingEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val ratingId: Long?,
+    val ratingId: Long? = null,
     @ManyToOne
     @JoinColumn(name = "movie_id")
     @JsonBackReference
-    var movie: MovieEntity,
-    var rating: Int
+    val movie: MovieEntity,
+    val rating: Int
 )

@@ -10,7 +10,7 @@ import com.example.cinema.model.entity.ShowtimeEntity
 import com.example.cinema.model.request.AddShowTimeAndPriceRequest
 
 
-class ObjectMapperUtils() {
+class ObjectMapperUtils {
     companion object {
         fun toShortDto(movie: MovieEntity): MovieShortDto {
             return MovieShortDto(
@@ -35,14 +35,14 @@ class ObjectMapperUtils() {
             )
         }
 
-        private fun toShowtimeDto(entity: ShowtimeEntity): ShowtimeDto {
+        fun toShowtimeDto(entity: ShowtimeEntity): ShowtimeDto {
             return ShowtimeDto(
                 startTime = entity.showtime,
                 ticketPrice = entity.price
             )
         }
 
-        private fun toRatingDto(entity: RatingEntity): RatingDto {
+        fun toRatingDto(entity: RatingEntity): RatingDto {
             return RatingDto(
                 value = entity.rating
             )

@@ -13,13 +13,13 @@ import lombok.RequiredArgsConstructor
 class MovieEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val movieId: Long?,
-    var title: String? = null,
-    var imdbId: String? = null,
+    val movieId: Long? = null,
+    val title: String? = null,
+    val imdbId: String? = null,
     @JsonManagedReference
     @OneToMany(cascade = [CascadeType.ALL], mappedBy = "movie")
-    var showtimes: List<ShowtimeEntity>? = null,
+    val showtimes: List<ShowtimeEntity>? = null,
     @JsonManagedReference
     @OneToMany(cascade = [CascadeType.ALL], mappedBy = "movie")
-    var ratings: List<RatingEntity>? = null
+    val ratings: List<RatingEntity>? = null
 )

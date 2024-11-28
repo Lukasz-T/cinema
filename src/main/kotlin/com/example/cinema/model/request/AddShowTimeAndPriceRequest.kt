@@ -14,10 +14,10 @@ data class AddShowTimeAndPriceRequest(
         example = "1"
     )
     @get:NotNull
-    var movieId: Long,
+    val movieId: Long,
 
-    var newTicketPrice: BigDecimal,
+    val newTicketPrice: BigDecimal,
 
     @get:JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    var newTime: LocalDateTime
+    val newTime: LocalDateTime
 )

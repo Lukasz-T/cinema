@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDateTime
 
 @RestController
-class ShowtimeController(val showtimeService: ShowtimeService, val movieService: MovieService) : ShowtimeApi {
+class ShowtimeController(private val showtimeService: ShowtimeService, private val movieService: MovieService) :
+    ShowtimeApi {
 
     override fun getShowtimesForMovie(
         @PathVariable movieId: Long,
