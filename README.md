@@ -65,5 +65,3 @@ Preloaded test data is available in all three database tables, accessible throug
 - Future enhancements include expanding test coverage, implementing proper authentication, and optimizing API performance.
 
 ---
-
-This README improves readability and makes the information more structured, professional, and accessible to potential collaborators or users.
