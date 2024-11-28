@@ -24,12 +24,10 @@ class RatingControllerE2ETest {
     @Autowired
     private lateinit var movieService: MovieService
 
-    private val objectMapper = ObjectMapper() // Using the standard ObjectMapper
+    private val objectMapper = ObjectMapper()
 
     @BeforeEach
     fun setup() {
-        // Set up any mock data for the tests.
-        // For instance, create a movie entity if needed to test against
         val movieEntity = MovieEntity(
             movieId = 1L,
             title = "The Fast and the Furious",
@@ -57,17 +55,14 @@ class RatingControllerE2ETest {
 
     @Test
     fun `submitReview should return 404 when movie does not exist`() {
-        // Arrange
         val rateMovieRequest = RateMovieRequest(
-            movieId = 999L, // A non-existing movieId
-            rating = 7
+            movieId = 999L, rating = 7
         )
 
-        // Act & Assert
         mockMvc.perform(
             MockMvcRequestBuilders.post("/ratings")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(rateMovieRequest)) // Using ObjectMapper to serialize request body
+                .content(objectMapper.writeValueAsString(rateMovieRequest))
         )
             .andExpect(status().isNotFound)
     }

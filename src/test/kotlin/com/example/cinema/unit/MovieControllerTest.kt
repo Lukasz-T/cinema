@@ -35,7 +35,6 @@ class MovieControllerTest {
 
     @Test
     fun `getAllMovies should return list of MovieShortDto`() {
-        // Mock data
         val movieEntities = listOf(
             MovieEntity(
                 movieId = 1L,
@@ -100,26 +99,21 @@ class MovieControllerTest {
             )
         )
 
-        // Mock service behavior
         `when`(movieService.getMovieList()).thenReturn(movieEntities)
 
-        // Mock utility method
         mockk<ObjectMapperUtils.Companion> {
             every { toShortDto(movieEntities[0]) } returns movieShortDtos[0]
             every { toShortDto(movieEntities[1]) } returns movieShortDtos[1]
         }
 
-        // Call the method
         val response = movieController.getAllMovies()
 
-        // Assertions
         assertEquals(HttpStatus.OK, response.statusCode)
         assertEquals(movieShortDtos, response.body)
     }
 
     @Test
     fun `getMovieDetails should return OmdbDto for given movieId`() {
-        // Mock data
         val movieId = 1L
         val omdbDto = OmdbDto(
             title = "The Fast and the Furious",
@@ -149,13 +143,10 @@ class MovieControllerTest {
             ratings = mutableListOf(OmdbRatingsDto("Internet Movie Database", "6.8/10"))
         )
 
-        // Mock service behavior
         `when`(movieService.getMovieDetails(movieId)).thenReturn(omdbDto)
 
-        // Call the method
         val response = movieController.getMovieDetails(movieId)
 
-        // Assertions
         assertEquals(HttpStatus.OK, response.statusCode)
         assertEquals(omdbDto, response.body)
     }

@@ -38,7 +38,6 @@ class ShowtimeControllerIntegrationTest {
     @Test
     @Order(1)
     fun `saveShowTimeAndPrice should successfully save new showtime and price`() {
-        // Arrange
         val movieEntity = MovieEntity(
             movieId = 1L,
             title = "The Fast and the Furious 3",
@@ -54,7 +53,6 @@ class ShowtimeControllerIntegrationTest {
             )
         }
 
-        // Act and Assert
         mockMvc.perform(
             MockMvcRequestBuilders.post("/showtimes")
                 .contentType("application/json")
@@ -78,14 +76,11 @@ class ShowtimeControllerIntegrationTest {
 
     @Test
     fun `saveShowTimeAndPrice should return 404 when movie not found`() {
-        // Arrange
         val addShowTimeAndPriceRequest = AddShowTimeAndPriceRequest(
-            movieId = 999L, // Non-existent movieId
-            newTicketPrice = BigDecimal("20.00"),
+            movieId = 999L, newTicketPrice = BigDecimal("20.00"),
             newTime = LocalDateTime.of(2024, 12, 10, 19, 0)
         )
 
-        // Act and Assert
         mockMvc.perform(
             MockMvcRequestBuilders.post("/showtimes")
                 .contentType("application/json")
@@ -104,7 +99,6 @@ class ShowtimeControllerIntegrationTest {
 
     @Test
     fun `getShowtimesForMovie should return showtimes for a movie`() {
-        // Arrange
         val movieEntity = MovieEntity(
             movieId = 1L,
             title = "The Fast and the Furious",
@@ -118,12 +112,10 @@ class ShowtimeControllerIntegrationTest {
                 )
             )
         )
-        movieRepository.save(movieEntity) // Save the movie to the repository
-        showtimeRepository.saveAll(movieEntity.showtimes!!) // Save the showtimes for the movie
-
+        movieRepository.save(movieEntity)
+        showtimeRepository.saveAll(movieEntity.showtimes!!)
         val fromTime = LocalDateTime.of(2024, 12, 1, 0, 0)
 
-        // Act and Assert
         mockMvc.perform(
             MockMvcRequestBuilders.get("/showtimes/{movieId}", movieEntity.movieId)
                 .param("fromTime", fromTime.toString())
@@ -135,17 +127,14 @@ class ShowtimeControllerIntegrationTest {
 
     @Test
     fun `getShowtimesForMovie should return 404 when no showtimes are found`() {
-        // Arrange
         val movieEntity = MovieEntity(
             movieId = 2L,
             title = "The Fast and the Furious 2",
             imdbId = "tt0232501"
         )
-        movieRepository.save(movieEntity) // Save the movie with no showtimes
-
+        movieRepository.save(movieEntity)
         val fromTime = LocalDateTime.of(2024, 12, 1, 0, 0)
 
-        // Act and Assert
         mockMvc.perform(
             MockMvcRequestBuilders.get("/showtimes/{movieId}", movieEntity.movieId)
                 .param("fromTime", fromTime.toString())
