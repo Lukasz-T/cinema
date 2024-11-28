@@ -1,8 +1,6 @@
-Here's an improved version of your README with enhanced clarity, structure, and formatting:
-
 ---
 
-# Movie Application
+# Cinema Application
 
 ## Overview
 This application is built using **Kotlin 1.9.25** and **Spring Boot 3.3.5**. It is designed to demonstrate API functionalities, testing, and integration with an in-memory H2 database for simplicity.
