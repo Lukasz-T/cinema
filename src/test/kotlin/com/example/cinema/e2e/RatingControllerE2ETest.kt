@@ -61,7 +61,7 @@ class RatingControllerE2ETest {
         )
 
         mockMvc.perform(
-            MockMvcRequestBuilders.post("/ratings")
+            MockMvcRequestBuilders.post("/ratings/addRating")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(rateMovieRequest))
         )
@@ -72,13 +72,13 @@ class RatingControllerE2ETest {
     fun `should return average rating and title for existing movie`() {
         val movieId = movieService.getMovieList().first().movieId
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/movies/$movieId"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/ratings/$movieId"))
             .andExpect(status().isOk)
     }
 
     @Test
     fun `should return 404 when movie does not exist`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/movies/9999"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/ratings/9999"))
             .andExpect(status().isNotFound)
     }
 }
